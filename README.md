@@ -23,5 +23,6 @@ gulp test to launch your unit tests with Karma
 gulp test:auto to launch your unit tests with Karma in watch mode
 gulp protractor to launch your e2e tests with Protractor
 gulp protractor:dist to launch your e2e tests with Protractor on the dist files
+
 In bower.js file there are specify needed resources for Seed Project. As your project will grow you will need to add new resources. Look at the full version of bower file in bower_all_dependencies.json to get resources that you need.
 `
