@@ -12,7 +12,9 @@ npm install
 bower install
 
 ## gulp commands
-Gulp file is based on angular gulp generator (https://github.com/Swiip/generator-gulp-angular). There are few main task that you can do:
+Gulp file is based on angular gulp generator (https://github.com/Swiip/generator-gulp-angular). 
+There are few main task that you can do:
+
 `
 gulp or gulp build to build an optimized version of your application in /dist
 gulp serve to launch a browser sync server on your source files
