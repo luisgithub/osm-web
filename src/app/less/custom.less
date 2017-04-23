@@ -1,0 +1,39 @@
+/* Only demo */
+@media (max-width: 1000px) {
+  .welcome-message {
+    display: none;
+  }
+}
+
+.col-xs-half, .col-xs-1half, .col-xs-qrt{
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+  .col-xs-half, .col-xs-1half, .col-xs-qrt {
+    float: left;
+  }
+  .col-xs-half {
+    width: 6%;
+  }
+  .col-xs-1half {
+    width: 13%;
+  }
+
+  .col-xs-qrt {
+    width: 4%;
+  }
+}
+
+.gutter-10.row {
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.gutter-10 > [class^="col-"], .gutter-10 > [class^=" col-"] {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+

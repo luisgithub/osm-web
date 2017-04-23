@@ -1,0 +1,32 @@
+<div class='container-fluid' ng-controller="TypeaheadCtrl">
+
+
+    <h4>Bootstrap 3 Typeahead</h4>
+
+    <!--Este es el bueno -->
+    <div class="row">
+      <div class="form-group input-group col-md-4">
+        <input type="text" ng-model="selectedPatient" placeholder="Paciente" typeahead="patient as patient.first_name+' '+patient.last_name for patient in getPatients($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" ng-model-options="{debounce: 1000}" class="form-control">
+        <span class="input-group-btn ">
+          <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+        </span>
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        <div ng-show="noResults">
+          <i class="glyphicon glyphicon-remove"></i> No Results Found
+        </div>
+
+      </div>
+    </div>
+  <div>
+    <pre>{{selectedPatient}}</pre>
+    <br>
+    <!-- -->
+  </div>
+    <h4>AngularStrap</h4>
+    <!--AgularStrap-->
+    <div class="form-group" ng-controller="TypeaheadDemoCtrl">
+        <label>Paciente</label>
+        <input type="text" class="form-control" ng-model="selectedPatient2" data-animation="am-filp-x" bs-options="patient as patient.first_name for patient in getPatients2($viewValue)" placeholder="Ingrese el nombre del paciente" bs-typeahead/>
+    </div>
+    <pre>{{selectedPatient2}}</pre>
+</div>

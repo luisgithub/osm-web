@@ -1,0 +1,506 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <toaster-container></toaster-container>
+  <br>
+
+  <!--/Patient Search -->
+  <div ng-controller="SaleCtrl as Sale">
+    <div class="ibox-content">
+      <h4 class="page-header">Paciente</h4>
+      <div class="row">
+          <div class="col-md-1">
+            <label class="control-label no-padding-right" style="padding-top: 8px">Nombre</label>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="form-group input-group">
+                <input type="text" ng-model="Sale.selectedPatient" placeholder="Igresa el nombre del Paciente.." uib-typeahead="patient as patient.first_name+' '+patient.last_name for patient in Sale.getPatients($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" ng-model-options="{debounce: 1000}" class="form-control" id="patient" name="patient" ng-value="PatientModal.patient.first_name+' '+PatientModal.patient.last_name" typeahead-on-select="updateSelectedPatient($item, $model, $label)">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                <div ng-show="noResults">
+                  <i class="glyphicon glyphicon-remove"></i> No Results Found
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <button type="button" class="btn btn-primary btn-circle btn-sm" ng-click="Sale.open()"><i class="fa fa-plus"></i> </button>
+            <button type="button" class="btn btn-success btn-circle btn-sm" ng-click="Sale.open()" ng-show="Sale.selectedPatient"><i class="fa fa-edit"></i> </button>
+          </div>
+      </div>
+    </div>
+    <div>
+      <!--/ Rx -->
+      <div class="ibox-content">
+        <h4 class="page-header">Rx - Anterior</h4>
+        <!--/ Rx -Anterior -->
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <p></p>
+          </div>
+          <div class="col-xs-half">
+            <p>ESF</p>
+          </div>
+          <div class="col-xs-half">
+            <p>CIL</p>
+          </div>
+          <div class="col-xs-half">
+            <p>EJE</p>
+          </div>
+          <div class="col-xs-half">
+            <p>ADD</p>
+          </div>
+          <div class="col-xs-half">
+            <p>DL</p>
+          </div>
+          <div class="col-xs-half">
+            <p>DC</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>TIPO</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>LENTE</p>
+          </div>
+          <div class="col-xs-half">
+            <p>ALTURA</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>COLOR</p>
+          </div>
+          <div class="col-xs-half">
+            <p>PRISMA</p>
+          </div>
+        </div>
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <div class="form-group">
+              <label>OD</label>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_esfod" ng-model="rx_ant.esfod" name="rx_ant_esfod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_cilod" ng-model="rx_ant.cilod" name="rx_ant_cilod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_ejeod" ng-model="rx_ant.ejeod" name="rx_ant_ejeod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_addod" ng-model="rx_ant.addod" name="rx_ant_addod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_dlod" ng-model="rx_ant.dlod" name="rx_ant_dlod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_dcod" ng-model="rx_ant.dcod" name="rx_ant_dcod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_ant_tipo" ng-model="rx_ant.tipo" name="rx_ant_tipo" disabled>
+                <option value="1 ">Seleccionar</option>
+                <option value="2 ">2 </option>
+                <option value="3 ">3 </option>
+                <option value="4 ">4 </option>
+                <option value="5 ">5 </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_ant_lente" ng-model="rx_ant.lente" name="rx_ant_lente" disabled>
+                <option value="1 ">Seleccionar</option>
+                <option value="2 ">2 </option>
+                <option value="3 ">3 </option>
+                <option value="4 ">4 </option>
+                <option value="5 ">5 </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_alturaod" ng-model="rx_ant.alturaod" name="rx_ant_alturaod" disabled>
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_ant_color" ng-model="rx_ant.color" name="rx_ant_color" disabled>
+                <option value="1 ">Seleccionar</option>
+                <option value="2 ">2 </option>
+                <option value="3 ">3 </option>
+                <option value="4 ">4 </option>
+                <option value="5 ">5 </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_prisma" ng-model="rx_ant.prisma" name="rx_ant_prisma" disabled>
+            </div>
+          </div>
+
+        </div>
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <div class="form-group">
+              <label>OI</label>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_esfoi" ng-model="rx_act.esfoi" name="rx_act_esfoi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_ciloi" ng-model="rx_act.ciloi" name="rx_act_ciloi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_ejeoi" ng-model="rx_act.ejeoi" name="rx_act_ejeoi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_addoi" ng-model="rx_act.addoi" name="rx_act_addoi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_dloi" ng-model="rx_act.dloi" name="rx_act_dloi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_dcoi" ng-model="rx_act.dcoi" name="rx_act.dcoi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_ant_alturaoi" ng-model="rx_act.alturaoi" name="rx_act_alturaoi" disabled>
+            </div>
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-half">
+          </div>
+
+        </div>
+        <h4 class="page-header">Rx - Actual</h4>
+        <!--/ Rx - Actual -->
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <p></p>
+          </div>
+          <div class="col-xs-half">
+            <p>ESF</p>
+          </div>
+          <div class="col-xs-half">
+            <p>CIL</p>
+          </div>
+          <div class="col-xs-half">
+            <p>EJE</p>
+          </div>
+          <div class="col-xs-half">
+            <p>ADD</p>
+          </div>
+          <div class="col-xs-half">
+            <p>DL</p>
+          </div>
+          <div class="col-xs-half">
+            <p>DC</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>TIPO</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>LENTE</p>
+          </div>
+          <div class="col-xs-half">
+            <p>ALTURA</p>
+          </div>
+          <div class="col-xs-1half">
+            <p>COLOR</p>
+          </div>
+          <div class="col-xs-half">
+            <p>PRISMA</p>
+          </div>
+        </div>
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <div class="form-group">
+              <label>OD</label>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_esfod" ng-model="Sale.rxActual.esf_od" name="rx_act_esfod">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_cilod" ng-model="Sale.rxActual.cil_od" name="rx_act_cilod">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_ejeod" ng-model="Sale.rxActual.eje_od" name="rx_act_ejeod">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_addod" ng-model="Sale.rxActual.add_od" name="rx_act_addod">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_dlod" ng-model="Sale.rxActual.dl_od" name="rx_act_dlod">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_dcod" ng-model="Sale.rxActual.dc_od" name="rx_act_dcod">
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_act_tipo" ng-model="Sale.tipoLente.selectedOption" name="rx_act_tipo" ng-options="item.tipo_lente for item in Sale.tipoLente.options">
+                <option value="">Seleccionar..</option>
+              </select>
+
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_act_lente" ng-model="Sale.lente.selectedOption" name="rx_act_lente">
+                <option value="" ng-selected="true">Seleccionar..</option>
+                <option ng-repeat="lente in Sale.lente.options" value="{{lente.id}}">{{lente.descripcion}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_alturaod" ng-model="Sale.rxActual.altura_od" name="rx_act_alturaod">
+            </div>
+          </div>
+          <div class="col-xs-1half">
+            <div class="form-group">
+              <select class="form-control" id="rx_act_color" ng-model="Sale.color.selectedOption" name="rx_act_color">
+                <option value="">Seleccionar</option>
+                <option ng-repeat="color in Sale.color.options" value="{{color.id}}">{{color.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_prisma" ng-model="Sale.rxActual.prisma" name="rx_act_prisma">
+            </div>
+          </div>
+
+        </div>
+        <div class="row gutter-10">
+          <div class="col-xs-qrt">
+            <div class="form-group">
+              <label>OI</label>
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_esfoi" ng-model="Sale.rxActual.esf_oi" name="rx_act_esfoi">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_ciloi" ng-model="Sale.rxActual.cil_oi" name="rx_act_ciloi">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_ejeoi" ng-model="Sale.rxActual.ejeo_i" name="rx_act_ejeoi">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_addoi" ng-model="Sale.rxActual.add_oi" name="rx_act_addoi">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_dloi" ng-model="Sale.rxActual.dl_oi" name="rx_act_dloi">
+            </div>
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_dcoi" ng-model="Sale.rxActual.dc_oi" name="rx_act.dcoi">
+            </div>
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-half">
+            <div class="form-group">
+              <input class="form-control" id="rx_act_alturaoi" ng-model="Sale.rxActual.altura_oi" name="rx_act_alturaoi">
+            </div>
+          </div>
+          <div class="col-xs-1half">
+          </div>
+          <div class="col-xs-half">
+          </div>
+
+        </div>
+      </div>
+
+      <!--/Presupuesto -->
+      <div class="ibox-content">
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="page-header">Presupuesto</h4>
+          </div>
+        </div>
+        <form>
+          <div>
+            <div class="row">
+              <div class="col-md-2">
+                <label class="control-label no-padding-right" style="padding-top: 8px">Tipo Concepto</label>
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <select class="form-control" id="categoria" name="categoria" ng-model="Sale.tipoConcepto.selectedOption" ng-options="item.descripcion for item in Sale.tipoConcepto.options">
+                    <option value="">Seleccionar..</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <label class="control-label no-padding-right" style="padding-top: 8px">Concepto</label>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <div class="form-group input-group">
+                    <input type="text" ng-model="selectedItem" placeholder="Igresa el nombre del concepto.." uib-typeahead="saleItem as saleItem.descripcion for saleItem in Sale.getSaleItems($viewValue)" typeahead-loading="loadingSaleItems" typeahead-no-results="noResults" ng-model-options="{debounce: 1000}" class="form-control" id="saleItem" name="saleItem" ng-value="Sale.selectedSaleItem.descripcion" typeahead-on-select="updateSaleItem($item); selectedItem=''; Sale.tipoConcepto.selectedOption='';" >
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <i ng-show="loadingSaleItems" class="glyphicon glyphicon-refresh"></i>
+                    <div ng-show="noResults">
+                      <i class="glyphicon glyphicon-remove"></i> No Results Found
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-sm-1">
+                <div class="form-group">
+                  <label>Codigo</label>
+                  <input class="form-control" id="pre_codigo" ng-model="Sale.saleItem.codigo" name="pre_codigo">
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <div class="form-group">
+                  <label>Cantidad</label>
+                  <input type="number" class="form-control" id="pre_cantidad" ng-model="Sale.saleItem.cantidad" ng-value="cantidad" name="pre_cantidad">
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label>Descripcion</label>
+                  <input type="text" class="form-control" id="pre_descripcion" ng-model="Sale.saleItem.descripcion" name="pre_descripcion">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>P. Unitario</label>
+                <div class="input-group m-b">
+                  <span class="input-group-addon">$</span>
+                  <input type="text" class="form-control" id="pre_punitario" ng-model="Sale.saleItem.precio_venta" name="pre_punitario" ui-number-mask>
+                </div>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <div class="form-group input-group">
+                  <button type="button" id="addData" class="btn btn-primary" style="margin-top: 25px" ng-click="addData()">Agregar</button>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <div class="form-group" style="margin-top: 25px">
+                  <button type="button" class="btn btn-primary btn-circle btn-sm" ng-click="Sale.openModalArmazon()"><i class="fa fa-plus"></i> </button>
+                  <button type="button" class="btn btn-success btn-circle btn-sm" ><i class="fa fa-edit"></i> </button>
+                </div>
+              </div>
+            </div>
+            <br>
+            <!--Sale Items Grid -->
+            <div id="grid1" ui-grid="gridOpts" class="grid"></div>
+            <br>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label>Doctor:</label>
+                  <select class="form-control" name="doctor">
+                    <option>Vivian Rodrigez</option>
+                    <option>Jorge Tapia</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <span class="pull-right"><label>SubTotal:</label><input type="text" class="form-control" ng-model="Sale.subTotal" ui-money-mask readonly=""></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <label>Asistente:</label>
+                <select class="form-control" name="asistente">
+                  <option>Dulce Roman</option>
+                  <option>Carmen Electra</option>
+                </select>
+
+              </div>
+              <div class="col-sm-6 col-md-4">
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                  <label>Observaciones:</label>
+                            <textarea name="observaciones" rows="4" cols="100">
+                            </textarea>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <span class="pull-right">
+                  <button class="btn btn-primary" id="saveRx" type="button" ng-click="Sale.save()">Guardar</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>

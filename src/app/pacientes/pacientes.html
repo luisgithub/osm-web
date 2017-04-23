@@ -1,0 +1,63 @@
+<div ng-controller="testUiComponents as test" class="wrapper">
+
+    <form name="myForm" role="form" novalidate class="ng-pristine ng-valid">
+      <div class="modal-body">
+        <div class="row">
+          <div class="form-group col-md-6" ng-class="{true: 'has-error'}[submitted && myForm.marca.$invalid]">
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" placeholder="Nombres" ng-model="item.nombre" required>
+            <span style="color: red" ng-show="{true: 'has-error'}[submitted && myForm.nombre.$error.required]">Nombre es requerido</span>
+          </div>
+          <div class="form-group col-md-6" ng-class="{true: 'has-error'}[submitted && myForm.apellido.$invalid]">
+            <label>Apellido</label>
+            <input class="form-control" name="apellido" placeholder="Apellidos" ng-model="item.apellido" required>
+            <span style="color: red" ng-show="{true: 'has-error'}[submitted && myForm.apellido.$error.required]">first Name is required</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Correo Electronico</label>
+            <input class="form-control" placeholder="Correo Electronico" ng-model="item.correo">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Telefono</label>
+            <input class="form-control" placeholder="Telefono" ng-model="item.telefono">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Celular</label>
+            <input class="form-control" placeholder="Celular" ng-model="item.celular">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Nacimiento</label>
+            <p class="input-group">
+              <input type="datetime" date-time auto-close="true" class="form-control" ng-model="item.naciemiento" view="date" min-view="date" format="dd/MM/yyyy">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Sexo</label>
+            <select class="form-control" ng-model="item.sexo">
+              <option value="0">Seleccionar..</option>
+              <option value="1">Hombre</option>
+              <option value="2">Mujer</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Activo</label>
+            <input icheck class="form-control btn btn-primary btn-sm pull-left m-t-n-xs" type="checkbox" name="active" ng-model="item.activo">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+    </form>
+
+
+</div>
